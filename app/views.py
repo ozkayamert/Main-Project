@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from .models import Product
+from .forms import CustomerRegistrationForm
 #from django.db.models import Count
 
 def home(request):
@@ -28,3 +29,8 @@ class ProductDetail(View):
     def get(self, request, pk):
         product = Product.objects.get(pk=pk)
         return render(request, "app/product_detail.html", locals())
+    
+class CustomerRegistrationView(View):
+    def get(self, request):
+        form = CustomerRegistrationForm()
+        return render(request, 'app/customerregistration.html', locals())
