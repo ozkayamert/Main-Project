@@ -66,7 +66,12 @@
                     <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                     <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
                     <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
-                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    <li>
+                        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                            {% csrf_token %}
+                        </form>
+                        <a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item mx-2">
